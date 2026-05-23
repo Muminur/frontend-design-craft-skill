@@ -30,6 +30,14 @@ curl -fsSL https://raw.githubusercontent.com/Muminur/frontend-design-craft-skill
 irm https://raw.githubusercontent.com/Muminur/frontend-design-craft-skill/main/install.ps1 | iex
 ```
 
+The piped `irm | iex` form is **not** affected by PowerShell's execution policy. If you instead saved `install.ps1` to disk and Windows blocks it ("running scripts is disabled on this system" / "not digitally signed"), run it bypassing the policy **for that one run only** (this never changes your machine-wide setting):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -All
+```
+
+The script also relaxes the policy for its own process and clears the "downloaded from the internet" block (`Unblock-File`) on itself and anything it downloads, so nested steps don't get blocked.
+
 Restart your CLI afterward to pick up the new skills and commands.
 
 ### Supported tools

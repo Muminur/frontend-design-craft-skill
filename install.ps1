@@ -5,11 +5,15 @@
   AI coding CLI it can find: Claude Code, Cursor, Codex CLI, Google Antigravity,
   Gemini CLI, Aider, Cline, opencode and Windsurf.
 
-  One-liner:
+  One-liner (recommended - not affected by execution policy):
     irm https://raw.githubusercontent.com/Muminur/frontend-design-craft-skill/main/install.ps1 | iex
 
   With flags (download then invoke):
     & ([scriptblock]::Create((irm https://raw.githubusercontent.com/Muminur/frontend-design-craft-skill/main/install.ps1))) -All
+
+  If you saved this file and Windows blocks it ("running scripts is disabled"
+  / "not digitally signed"), launch it bypassing the policy for that run only:
+    powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -All
 
   Flags: -All  -Tools "a,b,c"  -Uninstall  -DryRun  -Help
 #>
@@ -23,6 +27,15 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+# ---- execution-policy bypass -------------------------------------------------
+# Relax the policy for THIS process only (never machine-wide) so the installer
+# and any files it downloads are not blocked. Best-effort; ignored if already
+# unrestricted or if the host forbids the change.
+try { Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force -ErrorAction SilentlyContinue } catch {}
+# Clear the "downloaded from the internet" mark from this script if run as a file.
+try { if ($PSCommandPath) { Unblock-File -LiteralPath $PSCommandPath -ErrorAction SilentlyContinue } } catch {}
+
 $Repo      = "Muminur/frontend-design-craft-skill"
 $Branch    = "main"
 $MarkStart = "<!-- CRAFT:START - managed by craft installer, do not edit inside -->"
@@ -56,6 +69,8 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "skills\craft\SKILL.m
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   Invoke-WebRequest -Uri "https://github.com/$Repo/archive/refs/heads/$Branch.zip" -OutFile $zip -UseBasicParsing
   Expand-Archive -LiteralPath $zip -DestinationPath $tmp -Force
+  # Clear Mark-of-the-Web from everything we just downloaded.
+  try { Get-ChildItem -LiteralPath $tmp -Recurse -File | Unblock-File -ErrorAction SilentlyContinue } catch {}
   $Src = Join-Path $tmp "frontend-design-craft-skill-$Branch"
 }
 if (-not (Test-Path (Join-Path $Src "skills\craft\SKILL.md"))) { throw "Could not locate Craft source files." }
