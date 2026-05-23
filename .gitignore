@@ -1,0 +1,13 @@
+# Craft installer artifacts
+*.craft.bak
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Build / temp
+node_modules/
+tmp/
+*.log

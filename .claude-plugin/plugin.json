@@ -1,0 +1,18 @@
+{
+  "name": "craft",
+  "version": "1.0.0",
+  "description": "Website design plugin for Claude Code. Synthesizes purposeful motion, typographic polish, and anti-AI-slop taste into one design system.",
+  "author": {
+    "name": "Muminur"
+  },
+  "keywords": [
+    "design",
+    "frontend",
+    "ui",
+    "ux",
+    "animation",
+    "typography",
+    "anti-slop"
+  ],
+  "license": "MIT"
+}
