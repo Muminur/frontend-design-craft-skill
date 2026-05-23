@@ -1,6 +1,26 @@
-# Craft
+<p align="center">
+  <img src="assets/logo.svg" alt="Craft — motion, polish, taste" width="540">
+</p>
 
-> A Claude Code plugin for website design. Three lenses, one plugin: intentional motion, typographic polish, and anti-AI-slop taste.
+<p align="center">
+  <em>A Claude Code plugin for website design. Three lenses, one plugin: intentional motion, typographic polish, and anti-AI-slop taste.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Muminur/frontend-design-craft-skill/stargazers">
+    <img src="https://img.shields.io/github/stars/Muminur/frontend-design-craft-skill?style=for-the-badge&logo=github&label=Star&color=E0A106&labelColor=14171a" alt="Star Craft on GitHub">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-1FA39A?style=for-the-badge&labelColor=14171a" alt="MIT License">
+  </a>
+  <img src="https://img.shields.io/badge/CLIs-9_supported-E5604D?style=for-the-badge&labelColor=14171a" alt="9 CLIs supported">
+</p>
+
+<p align="center">
+  <strong>⭐ If Craft makes your frontends look less AI-generated, give it a star</strong> — it helps other people find it.
+</p>
+
+---
 
 Most AI-generated frontends share a visual signature — purple-to-blue gradient hero, Inter at every size, three-column feature grid, centered CTA, soft drop shadows everywhere. Craft is the layer that makes Claude Code stop producing that and start producing UIs that look considered.
 
@@ -161,9 +181,17 @@ See `skills/taste/references/archetype-examples.md` for the full breakdown.
 
 ## Cross-platform
 
-Craft is pure markdown — no scripts, no hooks, no native dependencies. Works identically on Windows, macOS, and Linux.
-
+The Craft skill itself is pure markdown — no hooks, no native dependencies — so it behaves identically on Windows, macOS, and Linux. The only platform-specific pieces are the two install scripts (`install.sh` / `install.ps1`), which simply copy that markdown into each tool's config directory.
 
 ## License
 
 MIT. Use it, fork it, ship it.
+
+---
+
+<p align="center">
+  <img src="assets/mark.svg" alt="Craft mark" width="72">
+</p>
+<p align="center">
+  <strong>Found Craft useful?</strong> <a href="https://github.com/Muminur/frontend-design-craft-skill/stargazers">Star the repo ⭐</a> so it reaches more people shipping frontends.
+</p>
